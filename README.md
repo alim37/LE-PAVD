@@ -10,25 +10,13 @@ sudo apt update
 sudo apt install -y python3-venv
 ```
 
-
-Verify installation:
-```
-python3 -m venv --help
-```
-Create a Virtual Environment
-
-From the project root directory:
+Create a Virtual Environment from the project root directory:
 ```
 python3 -m venv venv
 ```
-Activate the Virtual Environment
+Activate the Virtual Environment and Install Dependencies
 ```
 source venv/bin/activate
-```
-You should see (venv) in your terminal prompt.
-
-Install Project Dependencies
-```
 pip install --upgrade pip
 pip install -r requirements.txt
 ```
