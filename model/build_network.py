@@ -11,7 +11,7 @@ string_to_torch = {
     "GRU": torch.nn.GRU,
     "LSTM": torch.nn.LSTM,
     "DENSE": torch.nn.Linear,
-    "DROPOUT": torch.nn.Dropout(p=0.2),  # Added Dropout layer
+    "DROPOUT": torch.nn.Dropout(p=0.1),  # Added Dropout layer
     "LAYERNORM": torch.nn.LayerNorm,  # LayerNorm for GRU stability
     "BATCHNORM": torch.nn.BatchNorm1d,  # BatchNorm for stable training
     "GROUPNORM": torch.nn.GroupNorm,  # GroupNorm for smaller batch sizes
