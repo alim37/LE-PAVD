@@ -669,22 +669,22 @@ class lePAVDIAC(ModelBase):
         dxdt = torch.stack([ax, ay, ayaw], dim=1) * Ts
         
         
-        if self.eval_mode:
-            import pandas as pd
-            df = pd.read_csv(self.csv_path)
-            # print(Frx)
-            vx, vy, yaw_rate = (x[:, -1, :3] + dxdt)[0].cpu().detach().tolist()
-            # print(vx, vy, yaw_rate)
-            new_row = {
-                'Vx': vx,
-                'Vy': vy,
-                'yaw_rate': yaw_rate,
-                'Frx': Frx.cpu().detach().item(),
-                'Ffy': Ffy.cpu().detach().item(),
-                'Fry': Fry.cpu().detach().item(),
-            }
-            df.loc[len(df)] = new_row
-            df.to_csv(self.csv_path, index=False)
+        # if self.eval_mode:
+        #     import pandas as pd
+        #     df = pd.read_csv(self.csv_path)
+        #     # print(Frx)
+        #     vx, vy, yaw_rate = (x[:, -1, :3] + dxdt)[0].cpu().detach().tolist()
+        #     # print(vx, vy, yaw_rate)
+        #     new_row = {
+        #         'Vx': vx,
+        #         'Vy': vy,
+        #         'yaw_rate': yaw_rate,
+        #         'Frx': Frx.cpu().detach().item(),
+        #         'Ffy': Ffy.cpu().detach().item(),
+        #         'Fry': Fry.cpu().detach().item(),
+        #     }
+        #     df.loc[len(df)] = new_row
+        #     df.to_csv(self.csv_path, index=False)
         return x[:, -1, :3] + dxdt
 
 

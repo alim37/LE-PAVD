@@ -170,7 +170,7 @@ if __name__ == "__main__":
         # Create a fresh empty CSV
         df.to_csv(csv_path, index=False)
         if param_dict["MODEL"]["NAME"] not in string_to_model:
-            model = string_to_lePAVD[param_dict["MODEL"]["NAME"]](param_dict, eval_mode=eval, csv_path=csv_path)
+            model = string_to_lePAVD[param_dict["MODEL"]["NAME"]](param_dict, eval=eval, csv_path=csv_path)
             test_dataset = string_to_LEdataset[param_dict["MODEL"]["NAME"]](data_npy["features"], data_npy["labels"], scaler)
         else:
             model = string_to_model[param_dict["MODEL"]["NAME"]](param_dict, eval=eval, csv_path=csv_path)
@@ -178,7 +178,7 @@ if __name__ == "__main__":
             
     else:
         if param_dict["MODEL"]["NAME"] not in string_to_model:
-            model = string_to_lePAVD[param_dict["MODEL"]["NAME"]](param_dict, eval_mode=eval, csv_path=None)
+            model = string_to_lePAVD[param_dict["MODEL"]["NAME"]](param_dict, eval=eval, csv_path=None)
             test_dataset = string_to_LEdataset[param_dict["MODEL"]["NAME"]](data_npy["features"], data_npy["labels"], scaler)
         else:
             model = string_to_model[param_dict["MODEL"]["NAME"]](param_dict, eval=eval, csv_path=None)
