@@ -1,3 +1,39 @@
+## 🐍 Python Virtual Environment Setup
+
+This project uses Python virtual environments to ensure consistent dependencies and reproducible results.
+
+### Install `python-venv`
+
+On **Ubuntu / Debian-based systems**:
+```bash
+sudo apt update
+sudo apt install -y python3-venv
+```
+
+
+Verify installation:
+```
+python3 -m venv --help
+```
+Create a Virtual Environment
+
+From the project root directory:
+```
+python3 -m venv venv
+```
+Activate the Virtual Environment
+```
+source venv/bin/activate
+```
+You should see (venv) in your terminal prompt.
+
+Install Project Dependencies
+```
+pip install --upgrade pip
+pip install -r requirements.txt
+```
+
+
 ## Model Training
 
 To run an individual training experiment, use:
