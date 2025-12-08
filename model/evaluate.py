@@ -10,7 +10,7 @@ import matplotlib.pyplot as plt
 import pandas as pd
 from torch.profiler import profile, ProfilerActivity
 from torchinfo import summary 
-
+import argparse, argcomplete
 
 if torch.cuda.is_available():
     device = torch.device("cuda")
@@ -140,7 +140,6 @@ def evaluate_predictions(model, test_data_loader, eval_coeffs, name, all_eval = 
   
 
 if __name__ == "__main__":
-    import argparse, argcomplete
     parser = argparse.ArgumentParser(description="Label point clouds with bounding boxes.")
     parser.add_argument("model_cfg", type=str, help="Config file for model")
     parser.add_argument("dataset_file", type=str, help="Dataset file")
@@ -148,9 +147,7 @@ if __name__ == "__main__":
     parser.add_argument("--eval_coeffs", action="store_true", default=True, help="Print learned coefficients of model")
     parser.add_argument("--log_df", action='store_true', default=True, help="Log experiment in a pandas-df")
     # parser.add_argument("--data.set_split", type=float, default=1.0, help="Train/Val split ratio")
-
     eval = True
-    
     argcomplete.autocomplete(parser)
     args = parser.parse_args()
     argdict : dict = vars(args)
