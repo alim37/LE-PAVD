@@ -8,6 +8,8 @@ import numpy as np
 import time
 import matplotlib.pyplot as plt  
 import pandas as pd
+from torch.profiler import profile, ProfilerActivity
+from torchinfo import summary 
 
 
 if torch.cuda.is_available():
@@ -31,7 +33,7 @@ def compute_percent_error(predicted, target):
     return percent_errors
 
         
-from torch.profiler import profile, ProfilerActivity
+
 
 def evaluate_predictions(model, test_data_loader, eval_coeffs, name, all_eval = False):
     
@@ -135,8 +137,7 @@ def evaluate_predictions(model, test_data_loader, eval_coeffs, name, all_eval = 
 
     return final_loss
 
-# from fvcore.nn import FlopCountAnalysis, parameter_count
-from torchinfo import summary   
+  
 
 if __name__ == "__main__":
     import argparse, argcomplete
@@ -161,7 +162,6 @@ if __name__ == "__main__":
     data_npy = np.load(argdict["dataset_file"])
     
     if args.log_df:
-        import pandas as pd
         df = pd.DataFrame(columns=['Vx', 'Vy', 'yaw_rate', 'Frx', 'Fry', 'Ffy'])
         csv_path = f'{param_dict["MODEL"]["NAME"]}.csv'
         # Delete existing CSV file if it exists
